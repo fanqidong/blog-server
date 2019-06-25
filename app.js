@@ -5,8 +5,10 @@ import chalk from "chalk";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import connectMongo from "connect-mongo";
-import router from "./routes/index";
+import Router from "./routes/index";
 const app = express();
+const router = express.Router();
+
 app.all("*", (req, res, next) => {
   const { origin, Origin, referer, Referer } = req.headers;
   const allowOrigin = origin || Origin || referer || Referer || "*";
@@ -40,7 +42,7 @@ app.use(
   })
 );
 
-router(app);
+Router(app, router);
 
 app.listen(config.post, function() {
   console.log(chalk.green(`服务器启动成功，端口${config.post}`));

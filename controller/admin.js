@@ -1,5 +1,5 @@
-const adminModel = require("../models/admin");
-const formidable = require("formidable");
+import adminModel from '../models/admin'
+import formidable from 'formidable'
 const login = async (req, res, next) => {
   const form = new formidable.IncomingForm();
   form.parse(req, async function(err, fields, files) {

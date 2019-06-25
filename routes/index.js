@@ -1,4 +1,6 @@
 import admin from "./admin";
-export default app => {
-  app.use("/admin", admin);
+import category from "./category";
+export default app=> {
+  app.use("/api", admin);
+  app.use("/api", category);
 };

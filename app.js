@@ -27,6 +27,9 @@ app.all("*", (req, res, next) => {
   }
 });
 
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
 const MongoStore = connectMongo(session);
 app.use(cookieParser());
 app.use(

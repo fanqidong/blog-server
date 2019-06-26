@@ -1,12 +1,8 @@
 import articleModel from "../models/article";
 import formidable from "formidable";
 const article = async (req, res, next) => {
-  const form = new formidable.IncomingForm();
-  form.parse(req, async (err, fields, files) => {
-    const newArticle = {
-       
-    }
-  });
+  console.log(req.body)
+  await new articleModel(req.body).save()
   res.json({
     code: 1,
     msg: "提交成功！"

@@ -1,6 +1,6 @@
 import express from 'express'
-import Category from '../controller/category'
+import CategoryController from '../controller/category'
 const router = express.Router()
 
-router.post('/newCategory', Category.newCategory)
+router.post('/newCategory', CategoryController.category)
 export default router

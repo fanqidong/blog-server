@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate";
 const articleSchema = new mongoose.Schema(
   {
     id: Number,
@@ -44,5 +45,6 @@ const articleSchema = new mongoose.Schema(
   }
 );
 articleSchema.index({ id: 1 });
+articleSchema.plugin(mongoosePaginate);
 const NewArticle = mongoose.model("NewArticle", articleSchema);
 export default NewArticle;

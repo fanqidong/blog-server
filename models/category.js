@@ -3,26 +3,26 @@ const categorySchema = new mongoose.Schema(
   {
     id: Number,
     // 作者
-    category: [
+    categoryList: [
       {
         // 标题
         title: String,
         // 摘要
         desc: String,
         // 封面
-        cover: String
+        cover: String,
+        // 创建日期
+        createAt: {
+          type: Date,
+          default: Date.now()
+        },
+        // 更新日期
+        updateAt: {
+          type: Date,
+          default: Date.now()
+        }
       }
-    ],
-    // 创建日期
-    createAt: {
-      type: Date,
-      default: Date.now()
-    },
-    // 更新日期
-    updateAt: {
-      type: Date,
-      default: Date.now()
-    }
+    ]
   },
   {
     collection: "blog"

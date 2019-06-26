@@ -1,8 +1,8 @@
-import adminModel from '../models/admin'
-import formidable from 'formidable'
+import adminModel from "../models/admin";
+import formidable from "formidable";
 const login = async (req, res, next) => {
   const form = new formidable.IncomingForm();
-  form.parse(req, async function(err, fields, files) {
+  form.parse(req, async (err, fields, files) => {
     const { user_name, user_pwd } = fields.username;
     // console.log(user_name,user_pwd)
     const admin = await adminModel.findOne({
@@ -31,6 +31,6 @@ const login = async (req, res, next) => {
         });
   });
 };
-module.exports = {
+export default {
   login
 };

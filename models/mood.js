@@ -1,23 +1,19 @@
 import mongoose from "mongoose";
-const mood = new mongoose.Schema(
-  {
-    id: Number,
-    created_time: String,
-    last_time: String,
-    moods: [
-      {
-        id: Number,
-        tag: String,
-        content: String,
-        created_time: { type: Date, default: Date.now },
-        last_time: { type: Date, default: "" }
-      }
-    ]
+const moodSchema = new mongoose.Schema({
+  id: Number,
+  tag: String,
+  content: String,
+  // 创建日期
+  createAt: {
+    type: Date,
+    default: Date.now()
   },
-  {
-    collection: "blog"
+  // 更新日期
+  updateAt: {
+    type: Date,
+    default: Date.now()
   }
-);
-adminSchema.index({ id: 1 });
-const Mood = mongoose.model("Mood", mood);
+});
+moodSchema.index({ id: 1 });
+const Mood = mongoose.model("Mood", moodSchema);
 export default Mood;

@@ -7,7 +7,6 @@ import session from "express-session";
 import connectMongo from "connect-mongo";
 import Router from "./routes/index";
 const app = express();
-const router = express.Router();
 
 app.all("*", (req, res, next) => {
   const { origin, Origin, referer, Referer } = req.headers;
@@ -27,8 +26,8 @@ app.all("*", (req, res, next) => {
   }
 });
 
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const MongoStore = connectMongo(session);
 app.use(cookieParser());
@@ -45,7 +44,7 @@ app.use(
   })
 );
 
-Router(app, router);
+Router(app);
 
 app.listen(config.post, function() {
   console.log(chalk.green(`服务器启动成功，端口${config.post}`));

@@ -1,6 +1,10 @@
-import express from 'express'
-import CategoryController from '../controller/category'
-const router = express.Router()
+import express from "express";
+import CategoryController from "../controller/category";
+const router = express.Router();
 
-router.post('/newCategory', CategoryController.category)
-export default router
+router.get("/queryCategory", CategoryController.actions.queryCategory);
+router.post("/updateCategory", CategoryController.actions.updateCategory);
+router.post("/createCategory", CategoryController.actions.createCategory);
+router.post("/deleteCategory", CategoryController.actions.deleteCategory);
+    
+export default router;

@@ -1,5 +1,4 @@
 import adminModel from "../models/admin";
-import formidable from "formidable";
 const login = async (req, res, next) => {
     const { user_name, user_pwd } = req.body;
     const admin = await adminModel.findOne({
@@ -17,7 +16,7 @@ const login = async (req, res, next) => {
             msg: "登录成功！"
         });
     }
-    admin.user_pwd === user_pwd ?
+  await admin.user_pwd === user_pwd ?
         res.json({
             code: 1,
             msg: "登录成功！"

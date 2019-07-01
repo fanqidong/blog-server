@@ -18,10 +18,11 @@ const actions = {
   queryCategory: async (req, res, next) => {
     try {
       const result = await categoryModel.find({});
+
       res.json({
         code: 1,
         msg: "获取分类成功",
-        data: { result }
+        data: result 
       });
     } catch (err) {
       console.log(err);
@@ -55,10 +56,10 @@ const actions = {
     }
   },
   deleteCategory: async (req, res, next) => {
-    console.log(req.body.id);
+    console.log(req.body);
     try {
       const result = await categoryModel.findByIdAndRemove({
-        _id: req.body.id
+        _id: req.body._id
       });
       res.json({
         code: 1,

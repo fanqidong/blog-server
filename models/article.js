@@ -14,8 +14,10 @@ const articleSchema = new mongoose.Schema({
   desc: String,
   // 封面
   cover: String,
-  // 内容
+  // markdown内容
   mdContent: String,
+  // html内容
+  htmlContent: String,
   // 标签
   tag: Array,
   // 阅读量

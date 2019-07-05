@@ -18,7 +18,6 @@ const actions = {
   queryCategory: async (req, res, next) => {
     try {
       const result = await categoryModel.find({});
-
       res.json({
         code: 1,
         msg: "获取分类成功",

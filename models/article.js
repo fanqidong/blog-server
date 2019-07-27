@@ -1,6 +1,9 @@
-import mongoose from "mongoose";
+import {
+  Schema,
+  model
+} from "mongoose";
 import mongoosePaginate from "mongoose-paginate";
-const articleSchema = new mongoose.Schema({
+const articleSchema = new Schema({
   id: Number,
   // 作者
   author: {
@@ -30,18 +33,18 @@ const articleSchema = new mongoose.Schema({
     type: String,
     default: "public"
   },
-  // 创建日期
   createAt: {
     type: Date,
     default: Date.now()
   },
-  // 更新日期
   updateAt: {
     type: Date,
     default: Date.now()
   }
 });
-articleSchema.index({ id: 1 });
+articleSchema.index({
+  id: 1
+});
 articleSchema.plugin(mongoosePaginate);
-const Article = mongoose.model("Article", articleSchema);
+const Article = model("Article", articleSchema);
 export default Article;

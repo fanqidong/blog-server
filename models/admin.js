@@ -1,8 +1,11 @@
-import mongoose from "mongoose";
-const adminSchema = new mongoose.Schema({
+import {
+  Schema,
+  model
+} from "mongoose";
+const adminSchema = new Schema({
   id: Number,
-  user_name: String,
-  user_pwd: String,
+  username: String,
+  password: String,
   createAt: {
     type: Date,
     default: Date.now()
@@ -12,6 +15,8 @@ const adminSchema = new mongoose.Schema({
     default: "管理员"
   }
 });
-adminSchema.index({ id: 1 });
-const Admin = mongoose.model("Admin", adminSchema);
+adminSchema.index({
+  id: 1
+});
+const Admin = model("Admin", adminSchema);
 export default Admin;

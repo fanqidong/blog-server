@@ -2,10 +2,10 @@ import {
   Schema,
   model
 } from "mongoose";
-const moodSchema = new Schema({
+const tagSchema = new Schema({
   id: Number,
-  tag: String,
-  content: String,
+  label: String,
+  value: String,
   createAt: {
     type: Date,
     default: Date.now()
@@ -15,8 +15,8 @@ const moodSchema = new Schema({
     default: Date.now()
   }
 });
-moodSchema.index({
+tagSchema.index({
   id: 1
 });
-const Mood = model("Mood", moodSchema);
-export default Mood;
+const Tag = model("Tag", tagSchema);
+export default Tag;

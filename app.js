@@ -1,15 +1,21 @@
+import connection from "./mongodb/db";
 import express from "express";
-import db from "./mongodb/db";
 import config from "./config/default";
 import chalk from "chalk";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import connectMongo from "connect-mongo";
 import Router from "./routes/index";
+
 const app = express();
 
 app.all("*", (req, res, next) => {
-  const { origin, Origin, referer, Referer } = req.headers;
+  const {
+    origin,
+    Origin,
+    referer,
+    Referer
+  } = req.headers;
   const allowOrigin = origin || Origin || referer || Referer || "*";
   res.header("Access-Control-Allow-Origin", allowOrigin);
   res.header(
@@ -27,7 +33,9 @@ app.all("*", (req, res, next) => {
 });
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 
 const MongoStore = connectMongo(session);
 app.use(cookieParser());
@@ -46,6 +54,6 @@ app.use(
 
 Router(app);
 
-app.listen(config.post, function() {
+app.listen(config.post, function () {
   console.log(chalk.green(`服务器启动成功，端口${config.post}`));
 });

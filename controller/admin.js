@@ -1,13 +1,13 @@
 import adminModel from "../models/admin";
 const login = async (req, res, next) => {
-    const { user_name, user_pwd } = req.body;
+    const { username, password } = req.body;
     const admin = await adminModel.findOne({
-        user_name
+        username
     });
     if (!admin) {
         const newAdmin = {
-            user_name: user_name,
-            user_pwd: user_pwd,
+            username: username,
+            password: password,
             created_time: +new Date()
         };
         await adminModel.create(newAdmin);
@@ -16,7 +16,7 @@ const login = async (req, res, next) => {
             msg: "登录成功！"
         });
     }
-  await admin.user_pwd === user_pwd ?
+  await admin.password === password ?
         res.json({
             code: 1,
             msg: "登录成功！"

@@ -1,9 +1,9 @@
-import categoryModel from "../models/category";
+import tagModel from "../models/tag";
 
 export const actions = {
   createCategory: async (req, res, next) => {
     try {
-      const result = await categoryModel(req.body).save();
+      const result = await tagModel(req.body).save();
       res.json({
         code: 1,
         msg: "添加成功"
@@ -17,7 +17,7 @@ export const actions = {
   },
   queryCategory: async (req, res, next) => {
     try {
-      const result = await categoryModel.find({});
+      const result = await tagModel.find({});
       res.json({
         code: 1,
         msg: "获取分类成功",
@@ -38,7 +38,7 @@ export const actions = {
     };
     delete conditions.id;
     try {
-      const result = await categoryModel.findByIdAndUpdate({
+      const result = await tagModel.findByIdAndUpdate({
           _id: req.body.id
         },
         conditions, {
@@ -59,7 +59,7 @@ export const actions = {
   },
   deleteCategory: async (req, res, next) => {
     try {
-      const result = await categoryModel.findByIdAndRemove({
+      const result = await tagModel.findByIdAndRemove({
         _id: req.body._id
       });
       res.json({

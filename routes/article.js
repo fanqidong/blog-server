@@ -1,6 +1,9 @@
 import express from 'express';
-import ArticleController from '../controller/article';
+import { actions } from '../controller/article';
 const router = express.Router();
 
-router.post('/newArticle', ArticleController.article);
+router.get('/queryArticle', actions.queryArticle);
+router.post('/newArticle', actions.createArticle);
+router.post('/articleDetail', actions.queryDetail);
+
 export default router;
